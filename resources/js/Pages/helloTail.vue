@@ -1,6 +1,6 @@
 <script setup>
 import ComponentTest from '@/Components/Shared/ComponentTest.vue';
-import Pagination from '@/Components/Shared/Pagination.vue';
+import Pagination from '@/Components/Shared/Table/Pagination.vue';
 import { createStore } from 'vuex'
 </script>
   
