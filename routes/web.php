@@ -49,7 +49,8 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('/user')->middleware(['auth'])->group(function () {
     Route::get('/list', [UserController::class, 'index'])->name('user.index');
-    Route::get('/cadastrar', [UserController::class, 'index'])->name('user.store');
+    Route::get('/cadastrar', [UserController::class, 'create'])->name('user.create');
+    Route::post('/cadastrar', [UserController::class, 'store'])->name('user.store');
     Route::get('/editar', [UserController::class, 'index'])->name('user.edit');
     Route::get('/deletar', [UserController::class, 'index'])->name('user.delete');
 });
