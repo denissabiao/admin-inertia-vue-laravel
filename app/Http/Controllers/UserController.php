@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -19,18 +21,30 @@ class UserController extends Controller
 
     public function create()
     {
+        // dd(Session::all());
         return Inertia::render('User/Create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+
+        // $messages = [
+        //     'name.required' => 'O nome é obrigatório.'
+        // ];
+
+        // $request->validate([
+        //     'name' => 'required|unique:users,name',
+        //     'email' => 'required',
+        //     'password' => 'required',
+        // ], $messages);
+
+        // $user = new User;
+        // $user->fill($request->except('_token'));
+        // $user->password = Hash::make($user->password);
+        // $user->save();
+
+        return redirect()->back()->with('success', 'Usuário Cadastrado com Sucesso');
     }
 
     /**
