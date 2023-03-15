@@ -29,20 +29,23 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        // $messages = [
-        //     'name.required' => 'O nome é obrigatório.'
-        // ];
+        $messages = [
+            'name.required' => 'O nome é obrigatório.',
+            'name.unique' => 'Já existe um nome com esse cadastro.',
+            'email.required' => 'O email é obrigatório.',
+            'password.required' => 'A senha é obrigatória.'
+        ];
 
-        // $request->validate([
-        //     'name' => 'required|unique:users,name',
-        //     'email' => 'required',
-        //     'password' => 'required',
-        // ], $messages);
+        $request->validate([
+            'name' => 'required|unique:users,name',
+            'email' => 'required',
+            'password' => 'required',
+        ], $messages);
 
-        // $user = new User;
-        // $user->fill($request->except('_token'));
-        // $user->password = Hash::make($user->password);
-        // $user->save();
+        $user = new User;
+        $user->fill($request->except('_token'));
+        $user->password = Hash::make($user->password);
+        $user->save();
 
         return redirect()->back()->with('success', 'Usuário Cadastrado com Sucesso');
     }
