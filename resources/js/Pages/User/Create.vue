@@ -85,20 +85,6 @@ const form = useForm({
 )
 
 
-// watch(() => form.data(), (newData, oldData) => {
-//     this.clearError()
-// })
-
-function validate() {
-    router.visit(route('user.create'), {
-        method: 'post',
-        data: {
-            ...form.data(),
-            prevalidate: true,
-        }
-    },)
-}
-
 function clearError(fieldName) {
     form.clearErrors(fieldName)
 }
@@ -124,18 +110,6 @@ export default {
             showMessageFlash: true,
             csrfToken: document.head.querySelector("meta[name=\"csrf-token\"]").content,
         };
-    },
-    watch: {
-        showMessageFlash: 'someAction'
-    },
-    methods: {
-        // clearError(fieldName) {
-        //     // this.form.clearErrors(fieldName)
-        //     console.log(this.form)
-        // },
-        someAction() {
-            console.log('eeee')
-        },
     },
     components: { Link }
 }
