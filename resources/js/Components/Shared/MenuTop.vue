@@ -20,7 +20,7 @@
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                            <li class="list-none" list-none v-for="(item, key) in navigation" :key="key">
+                            <li class="list-none" list-none v-for="(item, key) in $store.state.menu" :key="key">
                                 <ItemMenu :item="item" />
                             </li>
                         </div>
@@ -75,7 +75,7 @@
         <DisclosurePanel class="sm:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1">
 
-                <NavLink v-for="item in navigation" :key="item.name"
+                <NavLink v-for="item in $store.state.menu" :key="item.name"
                     :class="[route().current(item.current) ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 pt-3 pb-3 flex items-center justify-center text-base w-full font-medium']"
                     :href="route(item.href)">
                     {{ item.name }}
@@ -95,27 +95,7 @@ import ItemMenu from '@/Components/Shared/ItemMenu.vue';
 
 
 
-const navigation = [
 
-    {
-        name: 'Produtos', href: 'dashboard', current: 'dashboard', secondary: [
-            { itemMenu: 'Cadastrar Produtos', current: 'user.index', href: 'dashboard' },
-            { itemMenu: 'Listar Produtos', current: 'user.index', href: 'dashboard' }
-        ]
-    },
-    {
-        name: 'Vendas', href: 'dashboard', current: 'dashboard', secondary: [
-            { itemMenu: 'Vendas Atuais', current: 'user.index', href: 'dashboard' },
-            { itemMenu: 'Relatório Vendas', current: 'user.index', href: 'dashboard' }
-        ]
-    },
-    {
-        name: 'Usuários', href: 'dashboard', current: 'user.index', secondary: [
-            { itemMenu: 'Cadastrar Usuário', current: 'user.create', href: 'user.create' },
-            { itemMenu: 'Editar Usuário', current: 'user.index', href: 'user.index' }
-        ]
-    },
-]
 </script>
 
 

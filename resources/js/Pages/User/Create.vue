@@ -1,26 +1,21 @@
 <template>
     <MenuTop />
     <section class="container w-1/3 px-4 pt-8 mx-auto ">
-        <TopHeader titleForm="Cadastrar Usuário"/>
-        <FlashMessage :form="form" />
+        <TopHeader titleForm="Cadastrar Usuário" />
+        <FlashMessage  />
     </section>
 
-    <FormComponent :form="form">
+    <FormComponent >
         <template v-slot:inputs>
-            <InputText field='email' labelField='Email' typeField='email' :form="form" />
-            <InputText field='name' labelField='Nome' typeField='text' :form="form" />
-            <InputText field='password' labelField='Senha' typeField='password' :form="form" />
+            <InputText field='email' labelField='Email' typeField='email'  />
+            <InputText field='name' labelField='Nome' typeField='text'  />
+            <InputText field='password' labelField='Senha' typeField='password'  />
         </template>
-
         <template v-slot:buttons>
             <button type="submit" class="btn-primary"> Salvar</button>
-            <Link type="submit" class="btn-secondary" :href="route('user.index')"> Voltar </Link>
+            <Link type="submit" class="btn-secondary" :href="route('user.index')"> Voltar</Link>
         </template>
-
     </FormComponent>
-
-
-    <!-- component -->
 </template>
 
 <script setup>
@@ -31,36 +26,28 @@ import FormComponent from '@/Components/Shared/Form/index.vue';
 import TopHeader from '@/Components/Shared/Form/topHeader.vue';
 import { Link, useForm } from '@inertiajs/vue3';
 
-const form = useForm({
-    name: '',
-    email: '',
-    password: ''
-},
-)
 
-const submitForm = () => {
-    form.post(route('user.store'), {
-        preserveScroll: true,
-        onSuccess: () => form.reset(),
-    },
-    )
-}
 
 </script>
 
 
 <script>
+import { useForm } from '@inertiajs/vue3';
 export default {
-    setup() {
-        return { form }
+
+    created() {
+        this.$store.commit('changeForm', useForm({
+            name: '',
+            email: '',
+            password: ''
+        })) 
+
     },
-    data() {
-        return {
-            showMessageFlash: true,
-            csrfToken: document.head.querySelector("meta[name=\"csrf-token\"]").content,
-        };
+    methods: {
+        changeValueForm(newValue) {
+            $store.commit('changeForm', newValue)
+        }
     },
-    components: { Link, InputText }
 }
 
 

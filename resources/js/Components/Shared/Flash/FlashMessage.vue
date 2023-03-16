@@ -15,7 +15,7 @@
             </svg>
         </button>
     </div>
-    <div v-if="(Object.keys(form.errors).length > 0) && $page.props.flash.showMessageFlash"
+    <div v-if="(Object.keys($store.state.form.errors).length > 0) && $page.props.flash.showMessageFlash"
         class="flex items-center justify-between max-w-3xl mb-8 bg-red-500 rounded">
         <div class="flex items-center">
             <svg class="flex-shrink-0 w-4 h-4 ml-4 mr-2 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -24,8 +24,8 @@
             </svg>
 
             <div class="py-4 text-sm font-medium text-white">
-                <span v-if="Object.keys(form.errors).length === 1">O formulário possui um erro.</span>
-                <span v-else>O formulário possui {{ Object.keys(form.errors).length }} erros.</span>
+                <span v-if="Object.keys($store.state.form.errors).length === 1">O formulário possui um erro.</span>
+                <span v-else>O formulário possui {{ Object.keys($store.state.form.errors).length }} erros.</span>
             </div>
         </div>
         <button type="button" class="p-2 mr-2 group" @click="$page.props.flash.showMessageFlash = false">
@@ -42,13 +42,6 @@
 const props = defineProps(['form']);
 </script>
 
-<script >
-    export default {
-        created(){
-            console.log(this.form)
-        }
 
-    }
-</script>
 
 

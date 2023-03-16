@@ -17,17 +17,35 @@
 
 <script setup>
 
+
 const props = defineProps({
     form: Object,
 });
 
-const submitForm = () => {
-    props.form.post(route('user.store'), {
-        preserveScroll: true,
-        onSuccess: () => form.reset(),
+
+
+</script>
+
+<script>
+export default {
+
+    methods: {
+        submitForm() {
+            console.log(this.$store.state.form)
+            this.$store.state.form.post(route('user.store'), {
+                preserveScroll: true,
+                onSuccess: () => this.$store.state.form.reset(),
+            },
+            )
+
+
+
+        }
     },
-    )
+
 }
+
+
 
 </script>
 
