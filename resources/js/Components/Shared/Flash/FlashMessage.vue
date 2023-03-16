@@ -15,7 +15,7 @@
             </svg>
         </button>
     </div>
-    <div v-if="(Object.keys($store.state.form.errors).length > 0) && $page.props.flash.showMessageFlash"
+    <div v-if=" $page.props.flash.showMessageFlash && $store.state.form.errors && Object.keys($store.state.form.errors).length > 0"
         class="flex items-center justify-between max-w-3xl mb-8 bg-red-500 rounded">
         <div class="flex items-center">
             <svg class="flex-shrink-0 w-4 h-4 ml-4 mr-2 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -40,7 +40,15 @@
 
 <script setup>
 const props = defineProps(['form']);
+console.log(props)
 </script>
+
+
+
+
+
+
+
 
 
 
