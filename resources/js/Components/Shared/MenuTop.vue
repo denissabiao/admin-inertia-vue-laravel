@@ -111,7 +111,7 @@ const navigation = [
     },
     {
         name: 'Usuários', href: 'dashboard', current: 'user.index', secondary: [
-            { itemMenu: 'Cadastrar Usuário', current: 'user.index', href: 'user.index' },
+            { itemMenu: 'Cadastrar Usuário', current: 'user.create', href: 'user.create' },
             { itemMenu: 'Editar Usuário', current: 'user.index', href: 'user.index' }
         ]
     },
