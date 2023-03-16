@@ -5,7 +5,7 @@
     <TableList :groupTable=groupTable>
       <TableHeader :tableHeader=tableHeader />
       <ButtonTop :buttonSecondary=buttonSecondary />
-
+      <FlashMessage  />
       <template v-slot:tbody>
         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
           <tr v-for="item in users" :key="item.id">
@@ -83,7 +83,7 @@ export default {
       }
     };
   },
-  components: { Link }
+  components: { Link, FlashMessage }
 }
 </script>
   
@@ -94,6 +94,7 @@ import TableList from '@/Components/Shared/Table/TableList.vue';
 import ButtonTop from '@/Components/Shared/Table/ButtonTop.vue';
 import TableHeader from '@/Components/Shared/Table/TableHeader.vue';
 import { Link } from '@inertiajs/vue3';
+import FlashMessage from '@/Components/Shared/Flash/FlashMessage.vue';
 defineProps({
   users: Array
 });

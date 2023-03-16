@@ -26,8 +26,6 @@ import FormComponent from '@/Components/Shared/Form/index.vue';
 import TopHeader from '@/Components/Shared/Form/topHeader.vue';
 import { Link, useForm } from '@inertiajs/vue3';
 
-
-
 </script>
 
 

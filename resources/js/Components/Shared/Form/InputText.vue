@@ -34,7 +34,6 @@ export default {
             this.$store.state.form.clearErrors(fieldName)
         }
     }
-
 }
 </script>
 

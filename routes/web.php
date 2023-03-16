@@ -52,7 +52,7 @@ Route::prefix('/user')->middleware(['auth'])->group(function () {
     Route::get('/cadastrar', [UserController::class, 'create'])->name('user.create');
     Route::post('/cadastrar', [UserController::class, 'store'])->name('user.store');
     Route::get('/editar', [UserController::class, 'index'])->name('user.edit');
-    Route::get('/deletar', [UserController::class, 'index'])->name('user.delete');
+    Route::get('/deletar/{id}', [UserController::class, 'destroy'])->name('user.delete');
 });
 
 require __DIR__ . '/auth.php';
