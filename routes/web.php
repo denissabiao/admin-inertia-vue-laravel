@@ -51,7 +51,8 @@ Route::prefix('/user')->middleware(['auth'])->group(function () {
     Route::get('/list', [UserController::class, 'index'])->name('user.index');
     Route::get('/cadastrar', [UserController::class, 'create'])->name('user.create');
     Route::post('/cadastrar', [UserController::class, 'store'])->name('user.store');
-    Route::get('/editar', [UserController::class, 'index'])->name('user.edit');
+    Route::get('/editar/{id}', [UserController::class, 'show'])->name('user.edit');
+    Route::post('/editar', [UserController::class, 'update'])->name('user.update');
     Route::get('/deletar/{id}', [UserController::class, 'destroy'])->name('user.delete');
 });
 

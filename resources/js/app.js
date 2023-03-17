@@ -6,6 +6,7 @@ import { createInertiaApp, useForm } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { createStore } from 'vuex'
+import axios from 'axios';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -33,13 +34,31 @@ const store = createStore({
                 ]
             },
         ],
-        form: {}
+        form: {},
+        testApi: {}
     },
     mutations: {
         changeForm(state, newData) {
             state.form = newData
+        },
+        changeApi(state, newDataApi) {
+            state.testApi = newDataApi
+        }
+    },
+    actions: {
+        async getApi() {
+            await axios.get('http://suportebh.ddns.net:3355/apiRfonseca/contasPagar/datas/2023-01-01/2023-04-01/obra/183', {
+                withCredentials: true
+            }).then(resp => {
+                console.log(resp.data)
+                this.commit('changeApi', resp.data)
+            }).catch(error => {
+                console.log(error)
+            })
+
         }
     }
+
 
 })
 

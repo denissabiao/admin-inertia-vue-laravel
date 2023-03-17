@@ -1,6 +1,6 @@
 <template>
     <div class="items-center justify-center mx-auto md:w-1/3 ">
-        <form @submit.prevent="submitForm">
+        <form @submit.prevent="editForm ? submitFormEdit(routeSubmit) : submitForm(routeSubmit)">
             <div class="overflow-hidden shadow sm:rounded-md">
                 <div class="px-4 py-5 bg-slate-50 sm:p-6">
                     <div class="grid grid-cols-6 gap-4 s">
@@ -20,6 +20,8 @@
 
 const props = defineProps({
     form: Object,
+    routeSubmit: String,
+    editForm: Boolean,
 });
 
 
@@ -30,16 +32,18 @@ const props = defineProps({
 export default {
 
     methods: {
-        submitForm() {
-            console.log(this.$store.state.form)
-            this.$store.state.form.post(route('user.store'), {
+        submitForm(routeSubmit) {
+            this.$store.state.form.post(route(routeSubmit), {
                 preserveScroll: true,
                 onSuccess: () => this.$store.state.form.reset(),
-            },
-            )
 
 
-
+            },)
+        },
+        submitFormEdit(routeSubmit) {
+            this.$store.state.form.post(route(routeSubmit), {
+                preserveScroll: true,
+            },)
         }
     },
 

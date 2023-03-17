@@ -45,20 +45,17 @@ export default {
       },
     };
   },
-  components: { Link, FlashMessage, ActionButton }
+  created() {
+        this.$store.commit('changeForm', {}) 
+    },
 }
 </script>
   
 <script setup>
 import MenuTop from '@/Components/Shared/MenuTop.vue';
 import Pagination from '@/Components/Shared/Table/Pagination.vue';
-import TableList from '@/Components/Shared/Table/TableList.vue';
 import TableBody from '@/Components/Shared/Table/index.vue';
-import ButtonTop from '@/Components/Shared/Table/ButtonTop.vue';
-import TableHeader from '@/Components/Shared/Table/TableHeader.vue';
-import { Link } from '@inertiajs/vue3';
-import FlashMessage from '@/Components/Shared/Flash/FlashMessage.vue';
-import ActionButton from '@/Components/Shared/Table/ActionButton.vue';
+
 defineProps({
   users: Array
 });

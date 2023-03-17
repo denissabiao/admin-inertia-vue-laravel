@@ -1,7 +1,7 @@
 <template>
     <div class="col-span-1 sm:col-span-3">
-        <label :for=field class="block text-sm font-medium leading-6 text-gray-900">{{ labelField }}</label>
-        <input :type=typeField v-model="$store.state.form[field]" @focusin="clearError(field)" :name=field :id=field
+        <label v-if="typeField != 'hidden'" :for=field class="block text-sm font-medium leading-6 text-gray-900">{{ labelField }}</label>
+        <input :type=typeField v-model="$store.state.form[field]"    @focusin="!edit ? clearError(field) : ''" :name=field :id=field
             autocomplete="given-name" :class="
                 !$store.state.form.errors[field]
                     ? 'input'
@@ -22,6 +22,7 @@ const props = defineProps({
     type: String,
     labelField: String,
     typeField: String,
+    valueField: String,
 });
 
 

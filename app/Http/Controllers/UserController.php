@@ -11,6 +11,13 @@ use Inertia\Inertia;
 class UserController extends Controller
 {
 
+    private $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
     public function index()
     {
         $users = User::all();
@@ -42,23 +49,20 @@ class UserController extends Controller
             'password' => 'required',
         ], $messages);
 
-        $user = new User;
-        $user->fill($request->except('_token'));
-        $user->password = Hash::make($user->password);
-        $user->save();
+        $this->user->fill($request->except('_token'));
+        $this->user->password = Hash::make($this->user->password);
+        $this->user->save();
 
         return redirect()->back()->with('success', 'Usuário Cadastrado com Sucesso');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show(User $id)
     {
-        //
+
+        $user = $this->user->find($id);
+
+        return Inertia::render('User/Edit', ['user' => $user]);
     }
 
     /**
@@ -69,19 +73,30 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(Request $request)
     {
-        //
+        $messages = [
+            'name.required' => 'O nome é obrigatório.',
+            'name.unique' => 'Já existe um nome com esse cadastro.',
+            'email.required' => 'O email é obrigatório.',
+        ];
+
+        $request->validate([
+            'name' => 'required|unique:users,name,' . $request->input('id') ,
+            'email' => 'required|unique:users,email,'.$request->input('id'),
+        ], $messages);
+
+        if ($request->input('password')) {
+            $this->user->password = Hash::make($this->user->password);
+        }
+
+        $ddd = $this->user->find($request->input('id'))->update($request->except('_token', 'password'));
+
+        return redirect()->back()->with('success', 'Usuário alterado com sucesso.');
     }
 
 
