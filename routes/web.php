@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +56,19 @@ Route::prefix('/user')->middleware(['auth'])->group(function () {
     Route::get('/editar/{id}', [UserController::class, 'show'])->name('user.edit');
     Route::post('/editar', [UserController::class, 'update'])->name('user.update');
     Route::get('/deletar/{id}', [UserController::class, 'destroy'])->name('user.delete');
+});
+
+Route::prefix('/product')->middleware(['auth'])->group(function () {
+    // Route::get('/list', [UserController::class, 'index'])->name('user.index');
+    // Route::get('/cadastrar', [UserController::class, 'create'])->name('user.create');
+    // Route::post('/cadastrar', [UserController::class, 'store'])->name('user.store');
+    // Route::get('/editar/{id}', [UserController::class, 'show'])->name('user.edit');
+    // Route::post('/editar', [UserController::class, 'update'])->name('user.update');
+    // Route::get('/deletar/{id}', [UserController::class, 'destroy'])->name('user.delete');
+    Route::get('/create', function () {
+       return Product::factory(5)->create();
+    }
+    );
 });
 
 require __DIR__ . '/auth.php';
