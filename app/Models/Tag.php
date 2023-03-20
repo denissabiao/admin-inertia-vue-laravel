@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Tag extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'src',
-        'alt',
+        'name_tag',
     ];
 
-    protected $table = 'images';
+    protected $table = 'tags';
 
-    public function variant_id()
+    public function products()
     {
-        return $this->belongsToMany(Variant::class);
+        return $this->hasMany(Product::class,'tag_id','id');
     }
 }

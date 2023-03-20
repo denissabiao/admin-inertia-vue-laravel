@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Collection extends Model
 {
     use HasFactory;
 
+    
     protected $fillable = [
-        'src',
-        'alt',
+        'name',
     ];
 
-    protected $table = 'images';
+    protected $table = 'collections';
 
-    public function variant_id()
+    public function products()
     {
-        return $this->belongsToMany(Variant::class);
+        return $this->hasMany(Product::class,'tag_id','id');
     }
 }
