@@ -59,16 +59,19 @@ Route::prefix('/user')->middleware(['auth'])->group(function () {
 });
 
 Route::prefix('/product')->middleware(['auth'])->group(function () {
-    // Route::get('/list', [UserController::class, 'index'])->name('user.index');
-    // Route::get('/cadastrar', [UserController::class, 'create'])->name('user.create');
-    // Route::post('/cadastrar', [UserController::class, 'store'])->name('user.store');
-    // Route::get('/editar/{id}', [UserController::class, 'show'])->name('user.edit');
-    // Route::post('/editar', [UserController::class, 'update'])->name('user.update');
-    // Route::get('/deletar/{id}', [UserController::class, 'destroy'])->name('user.delete');
+    Route::get('/list', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/cadastrar', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/cadastrar', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/editar/{id}', [ProductController::class, 'show'])->name('product.edit');
+    Route::post('/editar', [ProductController::class, 'update'])->name('product.update');
+    Route::get('/deletar/{id}', [ProductController::class, 'destroy'])->name('product.delete');
     Route::get('/create', function () {
        return Product::factory(5)->create();
-    }
-    );
+    });
+});
+
+Route::prefix('/tag')->middleware(['auth'])->group(function () {
+    Route::get('/list', [UserController::class, 'index'])->name('tag.index');
 });
 
 require __DIR__ . '/auth.php';
