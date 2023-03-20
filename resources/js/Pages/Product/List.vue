@@ -29,8 +29,8 @@ export default {
       },
       buttonAction: {
         button: [
-          { name: 'Editar', href: 'user.edit', class: 'btn-primary' },
-          { name: 'Excluir', href: 'user.delete', class: 'btn-danger' },
+          { name: 'Editar', href: 'product.edit', class: 'btn-primary' },
+          { name: 'Excluir', href: 'product.delete', class: 'btn-danger' },
         ]
       },
       rowTable: ['id', 'title', 'description','type'],
