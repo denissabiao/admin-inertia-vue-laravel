@@ -19,11 +19,30 @@ class Product extends Model
         'sale',
         'discount',
         'stock',
-        'new',
+        'new'
     ];
+
+    protected $table = 'products';
+
+    public function tag()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 
     public function collection()
     {
-        $this->belongsToMany(CollectionProduct::class, 'product_collections', 'product_id', 'collection_id');
+        return $this->belongsToMany(Collection::class);
     }
+
+    public function images()
+    {
+        return $this->belongsToMany(Image::class);
+    }
+
+    public function variants()
+    {
+        return $this->belongsToMany(Variant::class);
+    }
+
+
 }
