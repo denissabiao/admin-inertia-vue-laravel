@@ -1,6 +1,6 @@
 <template>
     <div v-if="$page.props.flash.success && $page.props.flash.showMessageFlash"
-        class="flex items-center justify-between max-w-3xl mb-8 bg-green-500 rounded">
+        class="flex items-center justify-between max-w-3xl mt-2 mb-8 bg-green-500 rounded">
         <div class="flex items-center">
             <svg class="flex-shrink-0 w-4 h-4 ml-4 mr-2 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <polygon points="0 11 2 9 7 14 18 3 20 5 7 18" />

@@ -93,7 +93,7 @@ class UserController extends Controller
             $this->user->password = Hash::make($this->user->password);
         }
 
-        $ddd = $this->user->find($request->input('id'))->update($request->except('_token', 'password'));
+        $this->user->find($request->input('id'))->update($request->except('_token', 'password'));
 
         return redirect()->back()->with('success', 'Usuário alterado com sucesso.');
     }
