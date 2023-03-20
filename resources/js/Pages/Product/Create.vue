@@ -13,11 +13,11 @@
                 <InputText field='type' labelField='Tipo' typeField='text' />
                 <InputText field='brand' labelField='Marca' typeField='text' />
                 <InputText field='category' labelField='Categoria' typeField='text' />
-                <ComboBox/>
                 <InputText field='price' labelField='Preço' typeField='text' />
-                <InputText field='sale' labelField='Disponível' typeField='text' />
                 <InputText field='stock' labelField='Estoque' typeField='text' />
-                <InputText field='new' labelField='Condição' typeField='text' />
+                <InputText field='discount' labelField='Desconto' typeField='text' />
+                <InputText field='sale' labelField='Sale' typeField='hidden' />
+                <InputText field='new' labelField='' typeField='hidden' />
             </template>
             <template v-slot:buttons>
                 <button type="submit" class="btn-primary"> Salvar</button>
@@ -42,7 +42,6 @@ import { Link, useForm } from '@inertiajs/vue3';
 
 <script>
 import { useForm } from '@inertiajs/vue3';
-import ComboBox from '@/Components/Shared/Form/ComboBox.vue';
 export default {
     created() {
         this.$store.commit("changeForm", useForm({
@@ -56,6 +55,9 @@ export default {
             discount: "",
             stock: "",
             new: "",
+            discount: "",
+            sale: true,
+            new: true,
         }));
     },
     methods: {
@@ -63,7 +65,6 @@ export default {
             $store.commit("changeForm", newValue);
         }
     },
-    components: { ComboBox }
 }
 
 

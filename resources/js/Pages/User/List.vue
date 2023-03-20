@@ -4,7 +4,7 @@
   <section class="container px-4 pt-8 mx-auto ">
 
     <TableBody :groupTable=groupTable :buttonSecondary=buttonSecondary :tableHeader=tableHeader :buttonAction=buttonAction
-      :itemIdTable="111" :users="users" :rowTable="rowTable" />
+      :itemIdTable="111" :itens="users" :rowTable="rowTable" />
 
     <Pagination />
   </section>
