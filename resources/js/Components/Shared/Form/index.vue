@@ -1,5 +1,5 @@
 <template>
-    <div class="items-center justify-center mx-auto md:w-1/3 ">
+    
         <form @submit.prevent="editForm ? submitFormEdit(routeSubmit) : submitForm(routeSubmit)">
             <div class="overflow-hidden shadow sm:rounded-md">
                 <div class="px-4 py-5 bg-slate-50 sm:p-6">
@@ -12,7 +12,6 @@
                 </div>
             </div>
         </form>
-    </div>
 </template>
 
 <script setup>

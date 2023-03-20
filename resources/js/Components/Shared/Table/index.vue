@@ -10,7 +10,7 @@ defineProps({
     buttonSecondary: Array,
     buttonAction: Array,
     itemIdTable: String,
-    users: Array,
+    itens: Array,
     rowTable: Array,
 });
 </script>
@@ -36,7 +36,7 @@ defineProps({
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                            <tr v-for="item in users" :key="item.id">
+                            <tr v-for="item in itens" :key="item.id">
                         
 
                                 <td v-for="(itemRow, key) in rowTable" :key="itemRow.key"
