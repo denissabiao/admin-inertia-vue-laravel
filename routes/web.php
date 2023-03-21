@@ -82,15 +82,7 @@ Route::prefix('/image')->middleware(['auth'])->group(function () {
     Route::get('/deletar/{id}', [ImageController::class, 'destroy'])->name('image.delete');
 
 });
-Route::prefix('/tags')->middleware(['auth'])->group(function () {
-    Route::get('/list', [TagController::class, 'index'])->name('tags.index');
-    Route::get('/cadastrar', [TagController::class, 'create'])->name('tags.create');
-    Route::post('/cadastrar', [TagController::class, 'store'])->name('tags.store');
-    Route::get('/editar/{id}', [TagController::class, 'show'])->name('tags.edit');
-    Route::post('/editar', [TagController::class, 'update'])->name('tags.update');
-    Route::get('/deletar/{id}', [TagController::class, 'destroy'])->name('tags.delete');
 
-});
 
 Route::prefix('/variant')->middleware(['auth'])->group(function () {
     Route::get('/list', [VariantController::class, 'index'])->name('variant.index');
