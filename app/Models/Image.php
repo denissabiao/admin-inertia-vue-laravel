@@ -12,6 +12,7 @@ class Image extends Model
     protected $fillable = [
         'src',
         'alt',
+        'image_id',
     ];
 
     protected $table = 'images';

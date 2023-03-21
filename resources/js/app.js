@@ -17,7 +17,7 @@ const store = createStore({
         menu: [
             {
                 name: 'Produtos', href: 'dashboard', current: 'dashboard', secondary: [
-                    { itemMenu: 'Cadastrar Produtos', current: 'user.index', href: 'dashboard' },
+                    { itemMenu: 'Cadastrar Produtos', current: 'product.create', href: 'product.create' },
                     { itemMenu: 'Listar Produtos', current: 'product.index', href: 'product.index' }
                 ]
             },
