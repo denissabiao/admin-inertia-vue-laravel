@@ -22,9 +22,9 @@ export default {
         "Ações",
       ],
       tableHeader: {
-        title: 'Listar Produtos',
+        title: 'Listar Variação',
         btnHeader: [
-          { name: 'Cadastrar Produtos', href: 'product.create' },
+          { name: 'Cadastrar Variação', href: 'product.create' },
         ]
       },
       buttonAction: {
@@ -37,10 +37,10 @@ export default {
       buttonSecondary: {
         secondary: true,
         buttons: [
-          { name: "Variação", href: "variant.index" },
-          { name: "Tags", href: "tag.index" },
-          { name: "Imagens", href: "image.index" },
-          { name: "Coleções", href: "collection.index" },
+          { name: "Variação", href: "dashboard" },
+          { name: "Tags", href: "dashboard" },
+          { name: "Imagens", href: "dashboard" },
+          { name: "Coleções", href: "dashboard" },
         ]
       },
     };

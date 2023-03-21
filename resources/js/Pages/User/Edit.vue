@@ -5,17 +5,19 @@
         <FlashMessage />
     </section>
 
-    <FormComponent routeSubmit='user.update' :editForm=true>
-        <template v-slot:inputs>
-            <InputText :edit=true field='email' labelField='Email' typeField='email' />
-            <InputText field='name' labelField='Nome' typeField='text' />
-            <InputText field='password' labelField='Senha' typeField='password' />
-            <InputText field='id' labelField='' typeField='hidden' />
-        </template> <template v-slot:buttons>
-            <button type="submit" class="btn-primary"> Salvar</button>
-            <Link type="submit" class="btn-secondary" :href="route('user.index')"> Voltar</Link>
-        </template>
-    </FormComponent>
+    <div class="items-center justify-center mx-auto md:w-1/3 ">
+        <FormComponent routeSubmit='user.update' :editForm=true>
+            <template v-slot:inputs>
+                <InputText :edit=true field='email' labelField='Email' typeField='email' />
+                <InputText field='name' labelField='Nome' typeField='text' />
+                <InputText field='password' labelField='Senha' typeField='password' />
+                <InputText field='id' labelField='' typeField='hidden' />
+            </template> <template v-slot:buttons>
+                <button type="submit" class="btn-primary"> Salvar</button>
+                <Link type="submit" class="btn-secondary" :href="route('user.index')"> Voltar</Link>
+            </template>
+        </FormComponent>
+    </div>
 </template>
 
 <script setup>

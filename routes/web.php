@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VariantController;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Application;
@@ -68,6 +71,45 @@ Route::prefix('/product')->middleware(['auth'])->group(function () {
     Route::get('/create', function () {
        return Product::factory(5)->create();
     });
+});
+
+Route::prefix('/image')->middleware(['auth'])->group(function () {
+    Route::get('/list', [ImageController::class, 'index'])->name('image.index');
+    Route::get('/cadastrar', [ImageController::class, 'create'])->name('image.create');
+    Route::post('/cadastrar', [ImageController::class, 'store'])->name('image.store');
+    Route::get('/editar/{id}', [ImageController::class, 'show'])->name('image.edit');
+    Route::post('/editar', [ImageController::class, 'update'])->name('image.update');
+    Route::get('/deletar/{id}', [ImageController::class, 'destroy'])->name('image.delete');
+
+});
+Route::prefix('/tags')->middleware(['auth'])->group(function () {
+    Route::get('/list', [TagController::class, 'index'])->name('tags.index');
+    Route::get('/cadastrar', [TagController::class, 'create'])->name('tags.create');
+    Route::post('/cadastrar', [TagController::class, 'store'])->name('tags.store');
+    Route::get('/editar/{id}', [TagController::class, 'show'])->name('tags.edit');
+    Route::post('/editar', [TagController::class, 'update'])->name('tags.update');
+    Route::get('/deletar/{id}', [TagController::class, 'destroy'])->name('tags.delete');
+
+});
+
+Route::prefix('/variant')->middleware(['auth'])->group(function () {
+    Route::get('/list', [VariantController::class, 'index'])->name('variant.index');
+    Route::get('/cadastrar', [VariantController::class, 'create'])->name('variant.create');
+    Route::post('/cadastrar', [VariantController::class, 'store'])->name('variant.store');
+    Route::get('/editar/{id}', [VariantController::class, 'show'])->name('variant.edit');
+    Route::post('/editar', [VariantController::class, 'update'])->name('variant.update');
+    Route::get('/deletar/{id}', [VariantController::class, 'destroy'])->name('variant.delete');
+
+});
+
+Route::prefix('/collection')->middleware(['auth'])->group(function () {
+    Route::get('/list', [CollectionController::class, 'index'])->name('collection.index');
+    Route::get('/cadastrar', [CollectionController::class, 'create'])->name('collection.create');
+    Route::post('/cadastrar', [CollectionController::class, 'store'])->name('collection.store');
+    Route::get('/editar/{id}', [CollectionController::class, 'show'])->name('collection.edit');
+    Route::post('/editar', [CollectionController::class, 'update'])->name('collection.update');
+    Route::get('/deletar/{id}', [CollectionController::class, 'destroy'])->name('collection.delete');
+
 });
 
 Route::prefix('/tag')->middleware(['auth'])->group(function () {

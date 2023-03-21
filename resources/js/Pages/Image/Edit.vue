@@ -4,17 +4,16 @@
         <TopHeader titleForm="Cadastrar Usuário" />
         <FlashMessage />
     </section>
-
-    <div class="items-center justify-center mx-auto md:w-1/3 ">
-        <FormComponent routeSubmit='user.store' :editForm=false>
+    <div class="items-center justify-center mx-auto md:w-1/2 ">
+        <FormComponent routeSubmit='image.update' :editForm=true>
             <template v-slot:inputs>
-                <InputText field='email' labelField='Email' typeField='email' />
-                <InputText field='name' labelField='Nome' typeField='text' />
-                <InputText field='password' labelField='Senha' typeField='password' />
+                <InputText field='alt' :edit=true labelField='Título' typeField='text' />
+                <InputText field='src' labelField='Link' typeField='text' />
+                <InputText field='id' labelField='' typeField='hidden' />
             </template>
             <template v-slot:buttons>
                 <button type="submit" class="btn-primary"> Salvar</button>
-                <Link type="submit" class="btn-secondary" :href="route('user.index')"> Voltar</Link>
+                <Link type="submit" class="btn-secondary" :href="route('image.index')"> Voltar</Link>
             </template>
         </FormComponent>
     </div>
@@ -28,6 +27,8 @@ import FormComponent from '@/Components/Shared/Form/index.vue';
 import TopHeader from '@/Components/Shared/Form/topHeader.vue';
 import { Link, useForm } from '@inertiajs/vue3';
 
+const props = defineProps(['image']);
+
 </script>
 
 
@@ -37,18 +38,16 @@ export default {
 
     created() {
         this.$store.commit('changeForm', useForm({
-            name: '',
-            email: '',
-            password: ''
-        }))
 
+            id: this.image.id,
+            alt: this.image.alt,
+            src: this.image.src,
+
+        }))
     },
     methods: {
         changeValueForm(newValue) {
             $store.commit('changeForm', newValue)
-        },
-        loadApi() {
-            this.$store.dispatch('getApi')
         }
     },
 }

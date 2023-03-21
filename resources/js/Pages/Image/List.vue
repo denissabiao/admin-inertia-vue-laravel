@@ -4,7 +4,7 @@
   <section class="container px-4 pt-8 mx-auto ">
 
     <TableBody :groupTable=groupTable :buttonSecondary=buttonSecondary :tableHeader=tableHeader :buttonAction=buttonAction
-      :itemIdTable="111" :itens="products" :rowTable="rowTable" />
+      :itemIdTable="111" :itens="images" :rowTable="rowTable" />
 
     <Pagination />
   </section>
@@ -16,31 +16,27 @@ export default {
     return {
       groupTable: [
         "Id",
-        "Título",
-        "Descrição",
-        "Tipo",
+        "Titulo",
+        "Link",
         "Ações",
       ],
       tableHeader: {
         title: 'Listar Produtos',
         btnHeader: [
-          { name: 'Cadastrar Produtos', href: 'product.create' },
+          { name: 'Cadastrar Imagens', href: 'image.create' },
         ]
       },
       buttonAction: {
         button: [
-          { name: 'Editar', href: 'product.edit', class: 'btn-primary' },
-          { name: 'Excluir', href: 'product.delete', class: 'btn-danger' },
+          { name: 'Editar', href: 'image.edit', class: 'btn-primary' },
+          { name: 'Excluir', href: 'image.delete', class: 'btn-danger' },
         ]
       },
-      rowTable: ['id', 'title', 'description','type'],
+      rowTable: ['id', 'alt', 'src'],
       buttonSecondary: {
         secondary: true,
         buttons: [
-          { name: "Variação", href: "variant.index" },
-          { name: "Tags", href: "tag.index" },
-          { name: "Imagens", href: "image.index" },
-          { name: "Coleções", href: "collection.index" },
+          { name: "Adicionar Imagem Variação", href: "dashboard" },
         ]
       },
     };
@@ -57,7 +53,7 @@ import Pagination from '@/Components/Shared/Table/Pagination.vue';
 import TableBody from '@/Components/Shared/Table/index.vue';
 
 defineProps({
-  products: Array
+  images: Array
 });
 
 
